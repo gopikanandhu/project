@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Merienda:wght@300..900&family=Oleo+Script:wght@400;700&display=swap" 
+rel="stylesheet">
+
+
+<style>
+    .navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background: transparent !important;
+}
+.bookcarousel-item img {
+  width: 300px; 
+  height: 300px;
+  object-fit: cover;    /* keeps good crop */
+  border-radius: 15px;
+}
+
+
+.carousel-item {
+    height: 750px;          /* Adjust the height as you want */
+}
+
+.carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;      /* Keeps image looking perfect */
+}
+.img-thumbnail{
+    border: 2px solid rgb(255, 222, 7);
+    background-color:rgb(255, 222, 7);
+}
+
+.oleo-script-regular {
+  font-family: "Oleo Script", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.oleo-script-bold {
+  font-family: "Oleo Script", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.berkshire-swash-regular {
+  font-family: "Berkshire Swash", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.card-img-top{
+  height: 200px;
+  object-fit: cover;
+}
+.custom-card{
+  border-radius: 25px;
+  
+}
+.custom-card img{
+  border-radius: 25px 25px 0 0;
+}
+.card{
+  height: 100%;
+ 
+}
+
+.dancing-script {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+.nav-link.active{
+  color: yellow;
+}
+
+
+ .img-hover-zoom {
+  overflow: hidden;      
+  border-radius: 50%;     /* To keep circle shape while zooming */
+}
+
+.img-hover-zoom img {
+  transition: transform 0.4s ease;
+}
+
+.img-hover-zoom img:hover {
+  transform: scale(1.12);
+}
+.review-card {
+    position: relative;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 40px;
+    
+}
+
+.review-img {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.review-img img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid #ffca2c; /* golden border */
+}
+
+.custom-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);   /* normal shadow */
+}
+
+/* Card hover effect */
+.custom-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(89, 67, 3, 0.5); /* golden glow shadow */
+}
+
+/* Image zoom on hover */
+.custom-card img {
+    transition: transform 0.4s ease;
+}
+
+.custom-card:hover img {
+    transform: scale(1.1);
+}
+
+.navbar-nav .nav-link:hover{
+  color: #ffca2c !important;
+}
+
+/* ---------------------------
+      RESPONSIVE FIXES
+-----------------------------*/
+
+/* NAVBAR */
+@media (max-width: 992px) {
+    .navbar {
+        background: black !important;
+        position: relative;
+    }
+    .navbar-brand {
+        font-size: 28px;
+    }
+}
+
+/* CAROUSEL */
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 350px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 22px;
+    }
+
+    .carousel-caption p {
+        font-size: 16px;
+    }
+
+    .carousel-caption a {
+        width: 40% !important;
+        font-size: 14px;
+    }
+}
+
+/* OFFER SECTION */
+@media (max-width: 768px) {
+    .img-hover-zoom img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* MENU CARDS */
+@media (max-width: 576px) {
+    .custom-card {
+        width: 100% !important;
+        margin: auto;
+    }
+}
+
+/* ABOUT SECTION */
+@media (max-width: 768px) {
+    #about img {
+        width: 100%;
+        height: auto;
+    }
+
+    #about h1 {
+        margin-top: 20px !important;
+        text-align: center;
+    }
+}
+
+/* BOOK TABLE IMAGE */
+@media (max-width: 768px) {
+    #book img {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-top: 20px;
+    }
+}
+
+/* CUSTOMER REVIEWS */
+@media (max-width: 768px) {
+    .review-card {
+        margin-top: 15px;
+    }
+
+    .review-img img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* FOOTER */
+@media (max-width: 768px) {
+    .container-fluid .col-4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
+</style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    
+    <a class="navbar-brand fs-1 fst-italic fw-bolder text-light berkshire-swash-regular" href="#">feane <i class="fa-solid fa-utensils"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+     aria-controls="navbarSupportedContent"
+     aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-light active " aria-current="page" href="#home">HOME</a>
+        </li>
+       
+         <li class="nav-item">
+          <a class="nav-link text-light" href="#menu">MENU</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link text-light" href="#about">ABOUT</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link text-light" href="#book">BOOK TABLE</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link text-light" href="#review">REVIEW</a>
+          </li>
+        
+            
+
+        
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
+        
+      </ul>
+
+      <!-- <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+        
+            <i class="fa-solid fa-cart-arrow-down me-4 text-light "></i>
+        
+            <i class="fa-solid fa-magnifying-glass me-4 text-light"></i>
+       
+        <!-- <button class="btn btn-warning text-light rounded-pill p-2"style="width: 15%;" type="submit">Order Online</button> -->
+         <a href="#" class="btn btn-warning px-4 py-2 fw-bold text-light rounded-pill oleo-script-regular">Order Online</a>
+      <!-- </form> -->
+    </div>
+  </div>
+</nav>
+<!-- sliding img -->
+
+ <div id="carouselExampleCaptions "id="home" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/beef-burger.jpg" class="d-block w-100"    alt="...">
+      <div class="carousel-caption d-block ">
+        <h1 class=" fw-bolder oleo-script-regular">Fast Food Restaurant</h1>
+        <p class="fst-italic fw-bold fs-4 ">The flavor you deserve,served instantly</p>
+        <a href="#" class="btn btn-warning btn-lg rounded-pill text-light p-2 oleo-script-regular " style="width: 20%;">Order Now</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="flat-lay-burgers-onion-rings.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-block">
+       <h1 class=" fw-bolder oleo-script-regular">Fast Food Restaurant</h1>
+        <p class="fst-italic fw-bold fs-4">The flavor you deserve,served instantly</p>
+        <a href="#" class="btn btn-warning btn-lg rounded-pill p-2 text-light oleo-script-regular"  style="width: 20%;">Order Now</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+         
+      <img src="pizza.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-block">
+       <h1 class=" fw-bolder oleo-script-regular">Fast Food Restaurant</h1>
+        <p class="fst-italic fw-bold fs-4">The flavor you deserve,served instantly</p>
+        <a href="#" class="btn btn-warning btn-lg rounded-pill text-light p-2 oleo-script-regular"  style="width: 20%;">Order Now</a>
+         
+      </div>
+    </div>
+  </div>
+   
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+    
+</div>
+</div>
+<!-- sect 2 -->
+<div class="container-fluid">
+    <div class="row mt-5 ">
+    <div class="col-6 ">
+  <div class="card  ms-auto  " style="max-width: 540px;background-color: black;">
+  <div class="row g-0   ">
+    <div class="col-md-4 p-2 mt-2 img-hover-zoom">
+      <img src="melted-cheese-burger2.jpg" class="img-fluid rounded-circle img-thumbnail"   alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body ">
+        <h5 class="card-title fs-4 fst-italic text-light oleo-script-regular">Tasty Thursdays</h5>
+        <h1 class="card-text fst-italic text-light oleo-script-regular">20% off</h1>
+        <a href="#" class="btn btn-warning btn-lg rounded-pill text-light p-2 oleo-script-regular"  style="width: 60%;">Order Now</a>
+        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+    <div class="col-6">
+        <div class="card mb-3 me-auto" style="max-width: 540px;background-color: black;">
+  <div class="row g-0">
+    <div class="col-md-4 p-2 mt-2 img-hover-zoom" >
+      <img src="shawarma-.jpg" class="img-fluid rounded-circle img-thumbnail " alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title fs-4 fst-italic text-light oleo-script-regular">Pizza Days</h5>
+        <h1 class="card-text fst-italic text-light oleo-script-regular">15% off</h1>
+         <a href="#" class="btn btn-warning btn-lg rounded-pill text-light p-2 oleo-script-regular"  style="width: 60%;">Order Now</a>
+        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+</div>
+<!-- section3 -->
+
+
+<h1 class="text-center mt-5 berkshire-swash-regular mb-5" id="menu">Our Menu</h1>
+
+<div class="container-fluid">
+<div class="row g-4 justify-content-center">
+
+
+<!-- MENU CARD TEMPLATE REPEATED WITH SAME IMG SRC -->
+<!-- 1 -->
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+<div class="card custom-card text-center w-100" style="max-width: 18rem;">
+<img src="burgur2.jpg" class="card-img-top" alt="...">
+<div class="card-body text-light" style="background-color: black;">
+<h5 class="card-title berkshire-swash-regular">Chicken Burgur</h5>
+<h4><i class="fa-solid fa-indian-rupee-sign"></i>260</h4>
+<p class="card-text" style="text-align: justify; font-family: sans-serif;">Juicy, tender grilled chicken breast layered with crisp lettuce,
+fresh tomatoes, and creamy mayo.
+</p>
+<a href="#" class="btn btn-warning btn-lg rounded-pill text-dark p-2 oleo-script-regular">Add to Cart</a>
+</div>
+</div>
+</div>
+
+
+<!-- 2 -->
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+<div class="card custom-card text-center w-100" style="max-width: 18rem;">
+<img src="shawarma2.jpg" class="card-img-top" alt="...">
+<div class="card-body text-light" style="background-color: black;">
+<h5 class="card-title berkshire-swash-regular">Chicken Shawarma</h5>
+<h4><i class="fa-solid fa-indian-rupee-sign"></i>180</h4>
+<p class="card-text" style="text-align: justify; font-family: sans-serif;">Thinly sliced boneless chicken cooked on a vertical split with
+garlic paste & crispy veggies.
+</p>
+<a href="#" class="btn btn-warning btn-lg rounded-pill text-dark p-2 oleo-script-regular">Add to Cart</a>
+</div>
+</div>
+</div>
+
+
+<!-- 3 -->
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+<div class="card custom-card text-center w-100" style="max-width: 18rem;">
+<img src="pizza3.jpg" class="card-img-top" alt="...">
+<div class="card-body text-light" style="background-color: black;">
+<h5 class="card-title berkshire-swash-regular">Pizza</h5>
+<h4><i class="fa-solid fa-indian-rupee-sign"></i>250</h4>
+<p class="card-text" style="text-align: justify; font-family: sans-serif;">Freshly baked thin crust topped with rich tomato sauce & mozzarella.
+</p>
+<a href="#" class="btn btn-warning btn-lg rounded-pill text-dark p-2 oleo-script-regular">Add to Cart</a>
+</div>
+</div>
+</div>
+
+
+<!-- 4 -->
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+<div class="card custom-card text-center w-100" style="max-width: 18rem;">
+<img src="loaded.jpg" class="card-img-top" alt="...">
+<div class="card-body text-light" style="background-color: black;">
+<h5 class="card-title berkshire-swash-regular">Loaded Fries</h5>
+<h4><i class="fa-solid fa-indian-rupee-sign"></i>280</h4>
+<p class="card-text" style="text-align: justify; font-family: sans-serif;">Crunchy fries topped with cheese and chicken.
+</p>
+<a href="#" class="btn btn-warning btn-lg rounded-pill text-dark p-2 oleo-script-regular">Add to Cart</a>
+</div>
+</div>
+</div>
+
+
+<!-- 5 -->
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+<div class="card custom-card text-center w-100" style="max-width: 18rem;">
+<img src="pasta.jpg" class="card-img-top" alt="...">
+<div class="card-body text-light" style="background-color: black;">
+<h5 class="card-title berkshire-swash-regular">Pasta</h5>
+<h4><i class="fa-solid fa-indian-rupee-sign"></i>250</h4>
+<p class="card-text" style="text-align: justify; font-family: sans-serif;">Creamy pasta served with herbs & seasoning.
+</p>
+<a href="#" class="btn btn-warning btn-lg rounded-pill text-dark p-2 oleo-script-regular">Add to Cart</a>
+</div>
+</div>
+</div>
+
+
+<!-- 6 -->
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+<div class="card custom-card text-center w-100" style="max-width: 18rem;">
+<img src="shawai.jpg" class="card-img-top" alt="...">
+<div class="card-body text-light" style="background-color: black;">
+<h5 class="card-title berkshire-swash-regular">Shawai</h5>
+<h4><i class="fa-solid fa-indian-rupee-sign"></i>300</h4>
+<p class="card-text" style="text-align: justify; font-family: sans-serif;">Grilled chicken marinated with Arabian spices.
+</p>
+<a href="#" class="btn btn-warning btn-lg rounded-pill text-dark p-2 oleo-script-regular">Add to Cart</a>
+</div>
+</div>
+</div>
+
+
+<!-- 7 -->
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+<div class="card custom-card text-center w-100" style="max-width: 18rem;">
+<img src="soup.jpg" class="card-img-top" alt="...">
+<div class="card-body text-light" style="background-color: black;">
+<h5 class="card-title berkshire-swash-regular">Chicken Soup</h5>
+<h4><i class="fa-solid fa-indian-rupee-sign"></i>150</h4>
+<p class="card-text" style="text-align: justify; font-family: sans-serif;">Juicy, tender grilled chicken breast layered with crisp lettuce,
+       fresh tomatoes, and creamy mayo, all nestled in a toasted sesame bun.
+</p>
+<a href="#" class="btn btn-warning btn-lg rounded-pill text-dark p-2 oleo-script-regular">Add to Cart</a>
+</div>
+</div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+<div class="card custom-card text-center w-100" style="max-width: 18rem;">
+<img src="alfam.jpg" class="card-img-top" alt="...">
+<div class="card-body text-light" style="background-color: black;">
+<h5 class="card-title berkshire-swash-regular">Alfaham</h5>
+<h4><i class="fa-solid fa-indian-rupee-sign"></i>170</h4>
+<p class="card-text" style="text-align: justify; font-family: sans-serif;">Thinly sliced boneless chicken cooked on a vertical split.
+      Served w/rice ,salad, hummus,garlic paste & pita breadand wrapped in warm flatbread with 
+      crisp vegetables, tangy pickles.
+</p>
+<a href="#" class="btn btn-warning btn-lg rounded-pill text-dark p-2 oleo-script-regular">Add to Cart</a>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+<div class="card custom-card text-center w-100" style="max-width: 18rem;">
+<img src="noodles.jpg" class="card-img-top" alt="...">
+<div class="card-body text-light" style="background-color: black;">
+<h5 class="card-title berkshire-swash-regular">Chicken Noodles</h5>
+<h4><i class="fa-solid fa-indian-rupee-sign"></i>180</h4>
+<p class="card-text" style="text-align: justify; font-family: sans-serif;">A timeless classic! Freshly baked thin crust topped with 
+      rich tomato sauce, 
+      creamy mozzarella, and a sprinkle of fresh basil leaves. Simple, elegant, and bursting with flavor.
+</p>
+<a href="#" class="btn btn-warning btn-lg rounded-pill text-dark p-2 oleo-script-regular">Add to Cart</a>
+</div>
+</div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-12 text-center mt-5">
+<a href="#" class="btn btn-warning px-4 py-2 fw-bold text-light rounded-pill oleo-script-regular">View More</a>
+</div>
+</div>
+
+<div class="container-fluid"id="about">
+  <div class="row mt-5">
+    <div class="col-6 bg-dark">
+      <img src="burgur4.webp"style="height: 600px">
+
+    </div>
+    <div class="col-6 bg-dark">
+      <h1 class="text-light dancing-script "style="margin-top:40%"  >We Are Feane</h1>
+      <p class=" text-light fs-5 mt-5" style="font-family: serif ;">Step into the world of Feane  where cravings meet perfection.
+From sizzling flavors to chef-crafted meals, we ensure every bite arrives fresh, hot, and made with care. 
+Fast delivery, top-tier quality, and unbeatable service… your perfect meal is just a tap away.</p>
+<!-- <a href="#" class="btn btn-warning btn-lg rounded-pill text-light p-2 oleo-script-regular " style="width: 20%;">Read More</a> -->
+<a href="#" class="btn btn-warning px-4 py-2 fw-bold text-light rounded-pill oleo-script-regular">Read More</a>
+
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid"id="book">
+   <h1 class="dancing-script mt-5">Book A Table</h1>
+  <div class="row">
+    <div class="col-6">
+     
+      <form>
+        <div class="mb-3 mt-3">   
+        <label class="form-label fw-bolder" >Name</label>
+        <input type="text" class="form-control"placeholder="Your name">
+        </div> 
+
+        <div class="mb-3 mt-3">   
+        <label class="form-label fw-bolder" >Phone Number</label>
+        <input type="text" class="form-control"placeholder="Phone Number">
+        </div> 
+       
+        <div class="mb-3 mt-3">   
+        <label class="form-label fw-bolder">Email</label>
+        <input type="email" class="form-control "placeholder="Your Email">
+        </div> 
+            <div class="mb-3 mt-3">   
+        <label class="form-label fw-bolder" >Number of Guests</label>
+        <input type="text" class="form-control"placeholder="How many guests?">
+        </div> 
+         <div class="mb-3 mt-3">   
+        <label class="form-label fw-bolder">Date</label>
+        <input type="date" class="form-control">
+        </div> 
+        <a href="#" class="btn btn-warning px-4 py-2 fw-bold text-light rounded-pill oleo-script-regular">Book Now</a>
+        
+      </form>
+
+    </div>
+    <div class="col-6">
+      <img src="res4.jpg" class="mt-5 ms-4">
+  </div>
+
+</div>
+  </div>
+</div>
+
+
+
+<!-- comments -->
+<div class="container my-5  " id="review"style="height: 500px;">
+    <h1 class="text-center dancing-script mb-5">What Says Our Customers</h1>
+
+    <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <!-- SLIDE 1 -->
+            <div class="carousel-item active">
+                <div class="row justify-content-center">
+
+                    <!-- Card 1 -->
+                    <div class="col-md-5 mb-4">
+                        <div class="review-card bg-dark text-light p-4 rounded">
+                            <p>“The food was delicious and well-seasoned. The flavors were balanced, and the portions were satisfying. The presentation made it look even more appealing.”
+
+</p>
+                            <h5 class="fw-bold mt-3">Moana Michell</h5>
+                            
+                        </div>
+                        <div class="review-img">
+                            <img src="p.webp" alt="" class="rounded-circle">
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-md-5 mb-4">
+                        <div class="review-card bg-dark text-light p-4 rounded">
+                            <p>“The service was excellent—staff were friendly, polite, and quick to serve. They explained the menu clearly and checked on us often the quality of the food was impressive.”</p>
+                            <h5 class="fw-bold mt-3">Mike Hamell</h5>
+                            
+                        </div>
+                        <div class="review-img">
+                            <img src="p2.webp" alt="" class="rounded-circle">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SLIDE 2 -->
+            <div class="carousel-item">
+                <div class="row justify-content-center">
+
+                    <!-- Card 3 -->
+                    <div class="col-md-5 mb-4">
+                        <div class="review-card bg-dark text-light p-4 rounded ">
+                            <p>“The service was excellent—staff were friendly, polite, and quick to serve. They explained the menu clearly and checked on us often the quality of the food was impressive.”
+</p>
+                            <h5 class="fw-bold mt-3">John Carter</h5>
+                            
+                        </div>
+                        <div class="review-img">
+                            <img src="p4.webp" alt="" class="rounded-circle">
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="col-md-5 mb-4">
+                        <div class="review-card bg-dark text-light p-4 rounded ">
+                            <p>“The quality of the food was impressive. Everything felt fresh and properly cooked. The restaurant was clean and well-maintained good service also.”
+
+</p>
+                            <h5 class="fw-bold mt-3">Elisa Brown</h5>
+                            
+                        </div>
+                        <div class="review-img">
+                            <img src="p5.jpg" alt="" class="rounded-circle">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-warning p-2 rounded-circle"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-warning p-2 rounded-circle"></span>
+        </button>
+
+    </div>
+</div>
+
+<!-- last section -->
+
+<div class="container-fluid bg-dark mb-5 " >
+  <div class="row mt-5">
+    <div class="col-4 mt-5 text-center text-light">
+     <h2 class="dancing-script mb-4">Contact Us</h2>
+     <h6 style="font-family:  serif;"><i class="fa-solid fa-location-dot me-2"></i>Near Eiffel Tower,Paris,France</h6>
+     <h6 style="font-family:  serif;"><i class="fa-solid fa-phone me-2"></i>Call +91 8567943289</h6>
+     <h6 style="font-family:  serif;"><i class="fa-solid fa-envelope me-2"></i>fean@gmail.com</h6>
+    </div>
+
+     <div class="col-4 mt-5  text-light text-center mb-5">
+      <h2 class="dancing-script">Feane</h2>
+      <p style="font-family:serif ;font-size:large;">From the first bite to the last, enjoy a dining experience filled with flavor, comfort, and smiles</p>
+      <i class="fa-brands fa-facebook  text-light fs-3"></i>
+      <i class="fa-brands fa-square-twitter fs-3"></i>
+      <i class="fa-brands fa-linkedin fs-3"></i>
+      <i class="fa-brands fa-square-instagram fs-3"></i>
+      <i class="fa-brands fa-pinterest fs-3"></i>
+      <h6  style="font-family:  serif;margin-top: 50px;font-size: large;"><i class="fa-regular fa-copyright "></i>2025 Fean -Made with Love to bring delicious food to your doorstep.</h6>
+    </div>
+
+     <div class="col-4 mt-5  text-light text-center">
+      <h2 class="dancing-script mb-4">Opening Hours</h2>
+      <h6 style="font-family:  serif;">Everyday</h6>
+      <h6 style="font-family:  serif;">10.00 Am-10.00 Pm</h6>
+      
+
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
